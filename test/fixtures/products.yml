@@ -3,13 +3,13 @@
 one:
   title: MyString
   description: MyText
-  image_url: Mine.jpg
+  image_url: ruby.jpg
   price: 9.99
 
 two:
   title: MyString
   description: MyText
-  image_url: Mine.jpg
+  image_url: ruby.jpg
   price: 9.99
 
 ruby:
@@ -17,4 +17,3 @@ ruby:
   description: Ruby is the fastest growing and most exciting dynamic language out there.
   price: 49.50
   image_url: ruby.jpg
-  

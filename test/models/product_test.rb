@@ -13,7 +13,7 @@ fixtures :products  # Not necessary. All fixtures load automagically.
     assert product.errors[:image_url].any?
   end
 
-  test "product price must ne a positive number" do
+  test "product price must be a positive number" do
     product = Product.new(title:  "My book",
                           description: "XYZ!",
                           image_url: "abc.jpg")
@@ -48,6 +48,17 @@ fixtures :products  # Not necessary. All fixtures load automagically.
       assert new_product(image_url).invalid?,
              "#{image_url} should be invalid"
     end
+  end
+
+  test "product is not valid without a unique title - i18n" do
+    product = Product.new(title:       products(:ruby).title,
+                          description: "yyy",
+                          price:       1,
+                          image_url:   "fred.gif")
+
+    assert product.invalid?
+    assert_equal [I18n.translate('errors.messages.taken')],
+                 product.errors[:title]
   end
 
 end
