@@ -24,8 +24,16 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show cart" do
-    get cart_url(@cart)
+    get store_index_url # to initialize the session
+    cart = Cart.find(session[:cart_id])
+    raise "No cart in session" unless cart
+    get cart_url(cart)
     assert_response :success
+  end
+
+  test "should redirect if cart is not session cart" do
+    get cart_url(@cart)
+    assert_redirected_to store_index_url
   end
 
   test "should get edit" do
