@@ -11,15 +11,10 @@ class LineItemsTest < ApplicationSystemTestCase
   end
 
   test "creating a Line item" do
-    visit line_items_url
-    click_on "New Line Item"
+    visit store_index_url
+    click_on "Add to Cart", match: :first
 
-    fill_in "Cart", with: @line_item.cart_id
-    fill_in "Product", with: @line_item.product_id
-    click_on "Create Line item"
-
-    assert_text "Line item was successfully created"
-    click_on "Back"
+    assert_selector("#cart article table td.quantity", text: "1")
   end
 
   test "updating a Line item" do
@@ -40,6 +35,6 @@ class LineItemsTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Line item was successfully destroyed"
+    assert_text "Item was successfully removed."
   end
 end

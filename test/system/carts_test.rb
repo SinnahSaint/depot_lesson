@@ -16,8 +16,8 @@ class CartsTest < ApplicationSystemTestCase
 
     click_on "Create Cart"
 
-    assert_text "Cart was successfully created"
-    click_on "Back"
+    assert_current_path store_index_url
+    assert_text "That is not your cart"
   end
 
   test "updating a Cart" do
@@ -26,8 +26,8 @@ class CartsTest < ApplicationSystemTestCase
 
     click_on "Update Cart"
 
-    assert_text "Cart was successfully updated"
-    click_on "Back"
+    assert_current_path store_index_url
+    assert_text "That is not your cart"
   end
 
   test "destroying a Cart" do
@@ -35,7 +35,7 @@ class CartsTest < ApplicationSystemTestCase
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
-
-    assert_text "Cart was successfully destroyed"
+    assert_current_path store_index_url
+    assert_text "Cart is currently empty."
   end
 end
