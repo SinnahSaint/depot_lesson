@@ -34,7 +34,9 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # How you want mail delivered:
-  config.action_mailer.delivery_method = :test
+  Rails.application.configure do
+    config.action_mailer.delivery_method = :test
+  end
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
