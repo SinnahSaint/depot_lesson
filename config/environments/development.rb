@@ -34,19 +34,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # How you want mail delivered:
-  Rails.application.configure do
-    config.action_mailer.delivery_method = :test
-  
-    config.action_mailer.smtp_settings = {
-      adress:               "smtp.gmail.com",
-      port:                 587,
-      domain:               "domain.of.sender.net",
-      authentication:       "plain",
-      user_name:            "dave",
-      password:             "secret",
-      enable_starttls_auto: true
-    }
-  end
+  config.action_mailer.delivery_method = :test
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
